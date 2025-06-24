@@ -410,6 +410,15 @@ An interactive GraphQL IDE is available at [`/graphiql`](http://localhost:8081/g
 
 ---
 
+## Portfolio & Contact
+
+For technical deep-dive, architecture consultations, or backend contract work, contact via  
+[Upwork](https://www.upwork.com/freelancers/~01fec0932cf5314b14) or [LinkedIn](https://www.linkedin.com/in/uros-ilic-6a201436a/).
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
+
 ## Contribution
 
 This is a personal portfolio project; **external contributions are not being accepted** at this time.
