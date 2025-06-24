@@ -1,0 +1,66 @@
+type Query {
+    attendanceRecord(id: ID!): AttendanceRecordResponse
+    attendanceRecordsForUser(userId: ID!): [AttendanceRecordResponse!]!
+    team(id: ID!): TeamResponse
+    teams: [TeamResponse!]!
+    role(id: ID!): RoleResponse
+    roles: [RoleResponse!]!
+    organization(id: ID!): OrganizationResponse
+    organizations: [OrganizationResponse!]!
+    user(id: ID!): UserResponse
+    users: [UserResponse!]!
+}
+
+type AttendanceRecordResponse {
+    id: ID!
+    user: UserResponse!
+    date: String!
+    startTime: String!
+    endTime: String!
+    type: String!
+    status: String!
+    approver: UserResponse
+    approvedAt: String
+    notes: String
+    createdAt: String!
+    updatedAt: String!
+}
+
+type UserResponse {
+    id: ID!
+    username: String!
+    email: String!
+    fullName: String!
+    status: String!
+    organization: OrganizationResponse
+    team: TeamResponse
+    roles: [RoleResponse!]
+    deletedAt: String
+}
+
+type TeamResponse {
+    id: ID!
+    name: String!
+    description: String
+    organizationId: ID!
+    organizationName: String
+}
+
+type RoleResponse {
+    id: ID!
+    name: String!
+    permissions: [PermissionResponse!]!
+}
+
+type OrganizationResponse {
+    id: ID!
+    name: String!
+    timezone: String!
+    status: String!
+}
+
+type PermissionResponse {
+    id: ID!
+    name: String!
+    description: String
+}

@@ -1,0 +1,67 @@
+# Java
+*.class
+*.jar
+*.war
+*.ear
+
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# Maven
+.mvn/
+target/
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+*.sw?
+
+# OS/Filesystem
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Spring Boot
+spring.log
+
+# Test Reports
+/test-output/
+/*.test.xml
+
+# Env
+.env
+*.env
+
+# Docker
+*.pid
+docker-compose.override.yml
+
+# Uploaded files, temp, and cache
+uploads/
+.cache/
+tmp/
+out/
+
+# Coverage & Jacoco
+coverage/
+.jacoco/
+
+# IntelliJ “generated”/output folder
+/out/
+
+# VSCode
+.vscode/
+
+# Mac OS X files
+.AppleDouble
+.LSOverride
+
+# Build Scan (Gradle)
+*.hprof

@@ -1,0 +1,98 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.5.0'
+	id 'io.spring.dependency-management' version '1.1.7'
+	id 'org.flywaydb.flyway' version '11.9.1'
+}
+
+group = 'com.uros'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	// Spring Boot core
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-websocket'
+
+	implementation 'org.springframework.boot:spring-boot-starter-graphql'
+
+	implementation 'org.flywaydb:flyway-core:11.9.1'
+	implementation 'org.flywaydb:flyway-database-postgresql:11.9.1'
+
+	implementation 'org.thymeleaf:thymeleaf'
+	implementation 'org.thymeleaf:thymeleaf-spring6'
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
+
+	// OpenAPI & Swagger
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.9'
+	implementation 'io.swagger.core.v3:swagger-annotations:2.2.30'
+
+	// JWT (JJWT)
+	implementation 'io.jsonwebtoken:jjwt-api:0.12.6'
+	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.12.6'
+	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.12.6'
+
+	// Lombok
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
+
+	// MapStruct
+	implementation 'org.mapstruct:mapstruct:1.5.5.Final'
+	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
+
+	// Dev tools
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	developmentOnly 'org.springframework.boot:spring-boot-docker-compose'
+
+	// Database
+	runtimeOnly 'org.postgresql:postgresql'
+
+	// Spring configuration processor (for @ConfigurationProperties)
+	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+
+	implementation 'io.micrometer:micrometer-registry-prometheus:1.15.1'
+
+	// Testing
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+	// PDF Export (use PDFBox 2.0.30 for Type1 fonts support)
+	implementation 'org.apache.pdfbox:pdfbox:2.0.30'
+
+	// Excel Export
+	implementation 'org.apache.poi:poi:5.2.5'
+	implementation 'org.apache.poi:poi-ooxml:5.2.5'
+}
+
+flyway {
+	url = 'jdbc:postgresql://localhost:5432/appdb'
+	user = 'appuser'
+	password = 'appsecret'
+	schemas = ['public']
+	locations = ['filesystem:src/main/resources/db/migration']
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
