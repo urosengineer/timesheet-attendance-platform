@@ -129,8 +129,8 @@ Entity-Relationship (ER) diagram shows all core tables and relationships (User, 
 ![Database ER Diagram](docs/database-er-diagram.png)
 *Entity-Relationship diagram: all core tables and relationships in the system.*
 
-All business objects are normalized and scoped by Organization for multi-tenant isolation.  
-Soft deletion and workflow status fields ensure full traceability and auditability.
+Most business entities are organization-scoped for multi-tenant isolation (Role and Permission are global).  
+Soft delete and workflow status fields apply to all critical entities, enabling traceability and auditability.
 
 ---
 
