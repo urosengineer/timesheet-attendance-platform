@@ -168,7 +168,7 @@ Soft deletion and workflow status fields ensure full traceability and auditabili
 ## Domain Model & Multi-Tenancy
 
 - **Full entity coverage:** User, Organization, Team, Role, Permission, AttendanceRecord, LeaveRequest, Notification, AuditLog, WorkflowLog
-- **Multi-tenancy:** All domain objects relate to Organization; per-request tenant context via ThreadLocal
+- **Multi-tenancy:** All critical business entities (User, AttendanceRecord, LeaveRequest, Notification, etc.) are organization-scoped via per-request tenant context (ThreadLocal). Role and Permission entities are global, enabling centralized access control definitions shared across all tenants
 - **Soft delete:** All critical entities use `deletedAt`, isDeleted/restore helpers, full audit trail
 - **Status-driven workflows:** Attendance & leave records managed by central workflow engine; all status changes audited and reversible
 - **Notification system:** Type-safe enum, channel-agnostic delivery, extensible for new business/event types
